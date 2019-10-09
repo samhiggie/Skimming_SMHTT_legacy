@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Thu Jun 13 03:38:55 2019 by ROOT version 6.10/09
+// Mon Sep 30 04:57:44 2019 by ROOT version 6.10/09
 // from TTree Ntuple/Expression Ntuple
-// found on file: /hdfs/store/user/tmitchel/SMHTT_2017_legacy_mc_v1/GluGluHToTauTau_M125_13TeV_powheg_pythia8_v2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v2/make_ntuples_cfg-047009D4-3D21-E911-9727-6C3BE5B541F8.root
+// found on file: /hdfs/store/user/caillol/SMHTT_2018_17sep_mc/DY3JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8_-102X_upgrade2018_realistic_v15-v1/make_ntuples_cfg-E187E67E-2A47-2B44-B437-1235D4E53F33.root
 //////////////////////////////////////////////////////////
 
 #ifndef HTauTauTree_em_h
@@ -114,6 +114,9 @@ public :
    Float_t         bjetDeepCSVVeto20Tight_2016_DR0p5;
    Float_t         bjetDeepCSVVeto20Tight_2017_DR0p5;
    Float_t         bjetDeepCSVVeto20Tight_2018_DR0p5;
+   Float_t         bweight_2016;
+   Float_t         bweight_2017;
+   Float_t         bweight_2018;
    Float_t         charge;
    Float_t         dielectronVeto;
    Float_t         dimu9ele9Pass;
@@ -198,6 +201,12 @@ public :
    Float_t         eMVANoisoWP90;
    Float_t         eMVANoisoWPLoose;
    Float_t         eMass;
+   Float_t         eMatchEmbeddedFilterEle24Tau30;
+   Float_t         eMatchEmbeddedFilterEle27;
+   Float_t         eMatchEmbeddedFilterEle32;
+   Float_t         eMatchEmbeddedFilterEle32DoubleL1_v1;
+   Float_t         eMatchEmbeddedFilterEle32DoubleL1_v2;
+   Float_t         eMatchEmbeddedFilterEle35;
    Float_t         eMatchesEle24HPSTau30Filter;
    Float_t         eMatchesEle24HPSTau30Path;
    Float_t         eMatchesEle24Tau30Filter;
@@ -210,6 +219,14 @@ public :
    Float_t         eMatchesEle32Path;
    Float_t         eMatchesEle35Filter;
    Float_t         eMatchesEle35Path;
+   Float_t         eMatchesMu23e12DZFilter;
+   Float_t         eMatchesMu23e12DZPath;
+   Float_t         eMatchesMu23e12Filter;
+   Float_t         eMatchesMu23e12Path;
+   Float_t         eMatchesMu8e23DZFilter;
+   Float_t         eMatchesMu8e23DZPath;
+   Float_t         eMatchesMu8e23Filter;
+   Float_t         eMatchesMu8e23Path;
    Float_t         eMissingHits;
    Float_t         eNearMuonVeto;
    Float_t         eNearestMuonDR;
@@ -447,6 +464,10 @@ public :
    Float_t         mJetPt;
    Float_t         mLowestMll;
    Float_t         mMass;
+   Float_t         mMatchEmbeddedFilterMu20Tau27_2017;
+   Float_t         mMatchEmbeddedFilterMu20Tau27_2018;
+   Float_t         mMatchEmbeddedFilterMu24;
+   Float_t         mMatchEmbeddedFilterMu27;
    Float_t         mMatchedStations;
    Float_t         mMatchesIsoMu19Tau20Filter;
    Float_t         mMatchesIsoMu19Tau20Path;
@@ -468,6 +489,14 @@ public :
    Float_t         mMatchesIsoTkMu22Path;
    Float_t         mMatchesIsoTkMu22eta2p1Filter;
    Float_t         mMatchesIsoTkMu22eta2p1Path;
+   Float_t         mMatchesMu23e12DZFilter;
+   Float_t         mMatchesMu23e12DZPath;
+   Float_t         mMatchesMu23e12Filter;
+   Float_t         mMatchesMu23e12Path;
+   Float_t         mMatchesMu8e23DZFilter;
+   Float_t         mMatchesMu8e23DZPath;
+   Float_t         mMatchesMu8e23Filter;
+   Float_t         mMatchesMu8e23Path;
    Float_t         mMiniIsoLoose;
    Float_t         mMiniIsoMedium;
    Float_t         mMiniIsoTight;
@@ -542,9 +571,52 @@ public :
    Float_t         npNLO;
    Float_t         numGenJets;
    Float_t         nvtx;
+   Float_t         prefiring_weight;
+   Float_t         prefiring_weight_down;
+   Float_t         prefiring_weight_up;
    Float_t         processID;
    Float_t         puppiMetEt;
    Float_t         puppiMetPhi;
+   Float_t         puppiMet_shiftedPhi_JetEC2Down;
+   Float_t         puppiMet_shiftedPhi_JetEC2Up;
+   Float_t         puppiMet_shiftedPhi_JetEnDown;
+   Float_t         puppiMet_shiftedPhi_JetEnUp;
+   Float_t         puppiMet_shiftedPhi_JetEta0to3Down;
+   Float_t         puppiMet_shiftedPhi_JetEta0to3Up;
+   Float_t         puppiMet_shiftedPhi_JetEta0to5Down;
+   Float_t         puppiMet_shiftedPhi_JetEta0to5Up;
+   Float_t         puppiMet_shiftedPhi_JetEta3to5Down;
+   Float_t         puppiMet_shiftedPhi_JetEta3to5Up;
+   Float_t         puppiMet_shiftedPhi_JetRelativeBalDown;
+   Float_t         puppiMet_shiftedPhi_JetRelativeBalUp;
+   Float_t         puppiMet_shiftedPhi_JetRelativeSampleDown;
+   Float_t         puppiMet_shiftedPhi_JetRelativeSampleUp;
+   Float_t         puppiMet_shiftedPhi_JetTotalDown;
+   Float_t         puppiMet_shiftedPhi_JetTotalUp;
+   Float_t         puppiMet_shiftedPhi_UnclusteredEnDown;
+   Float_t         puppiMet_shiftedPhi_UnclusteredEnUp;
+   Float_t         puppiMet_shiftedPt_JetEC2Down;
+   Float_t         puppiMet_shiftedPt_JetEC2Up;
+   Float_t         puppiMet_shiftedPt_JetEnDown;
+   Float_t         puppiMet_shiftedPt_JetEnUp;
+   Float_t         puppiMet_shiftedPt_JetEta0to3Down;
+   Float_t         puppiMet_shiftedPt_JetEta0to3Up;
+   Float_t         puppiMet_shiftedPt_JetEta0to5Down;
+   Float_t         puppiMet_shiftedPt_JetEta0to5Up;
+   Float_t         puppiMet_shiftedPt_JetEta3to5Down;
+   Float_t         puppiMet_shiftedPt_JetEta3to5Up;
+   Float_t         puppiMet_shiftedPt_JetRelativeBalDown;
+   Float_t         puppiMet_shiftedPt_JetRelativeBalUp;
+   Float_t         puppiMet_shiftedPt_JetRelativeSampleDown;
+   Float_t         puppiMet_shiftedPt_JetRelativeSampleUp;
+   Float_t         puppiMet_shiftedPt_JetTotalDown;
+   Float_t         puppiMet_shiftedPt_JetTotalUp;
+   Float_t         puppiMet_shiftedPt_UnclusteredEnDown;
+   Float_t         puppiMet_shiftedPt_UnclusteredEnUp;
+   Float_t         puppimetcov00;
+   Float_t         puppimetcov01;
+   Float_t         puppimetcov10;
+   Float_t         puppimetcov11;
    Float_t         pvChi2;
    Float_t         pvDX;
    Float_t         pvDY;
@@ -755,6 +827,9 @@ public :
    TBranch        *b_bjetDeepCSVVeto20Tight_2016_DR0p5;   //!
    TBranch        *b_bjetDeepCSVVeto20Tight_2017_DR0p5;   //!
    TBranch        *b_bjetDeepCSVVeto20Tight_2018_DR0p5;   //!
+   TBranch        *b_bweight_2016;   //!
+   TBranch        *b_bweight_2017;   //!
+   TBranch        *b_bweight_2018;   //!
    TBranch        *b_charge;   //!
    TBranch        *b_dielectronVeto;   //!
    TBranch        *b_dimu9ele9Pass;   //!
@@ -839,6 +914,12 @@ public :
    TBranch        *b_eMVANoisoWP90;   //!
    TBranch        *b_eMVANoisoWPLoose;   //!
    TBranch        *b_eMass;   //!
+   TBranch        *b_eMatchEmbeddedFilterEle24Tau30;   //!
+   TBranch        *b_eMatchEmbeddedFilterEle27;   //!
+   TBranch        *b_eMatchEmbeddedFilterEle32;   //!
+   TBranch        *b_eMatchEmbeddedFilterEle32DoubleL1_v1;   //!
+   TBranch        *b_eMatchEmbeddedFilterEle32DoubleL1_v2;   //!
+   TBranch        *b_eMatchEmbeddedFilterEle35;   //!
    TBranch        *b_eMatchesEle24HPSTau30Filter;   //!
    TBranch        *b_eMatchesEle24HPSTau30Path;   //!
    TBranch        *b_eMatchesEle24Tau30Filter;   //!
@@ -851,6 +932,14 @@ public :
    TBranch        *b_eMatchesEle32Path;   //!
    TBranch        *b_eMatchesEle35Filter;   //!
    TBranch        *b_eMatchesEle35Path;   //!
+   TBranch        *b_eMatchesMu23e12DZFilter;   //!
+   TBranch        *b_eMatchesMu23e12DZPath;   //!
+   TBranch        *b_eMatchesMu23e12Filter;   //!
+   TBranch        *b_eMatchesMu23e12Path;   //!
+   TBranch        *b_eMatchesMu8e23DZFilter;   //!
+   TBranch        *b_eMatchesMu8e23DZPath;   //!
+   TBranch        *b_eMatchesMu8e23Filter;   //!
+   TBranch        *b_eMatchesMu8e23Path;   //!
    TBranch        *b_eMissingHits;   //!
    TBranch        *b_eNearMuonVeto;   //!
    TBranch        *b_eNearestMuonDR;   //!
@@ -1088,6 +1177,10 @@ public :
    TBranch        *b_mJetPt;   //!
    TBranch        *b_mLowestMll;   //!
    TBranch        *b_mMass;   //!
+   TBranch        *b_mMatchEmbeddedFilterMu20Tau27_2017;   //!
+   TBranch        *b_mMatchEmbeddedFilterMu20Tau27_2018;   //!
+   TBranch        *b_mMatchEmbeddedFilterMu24;   //!
+   TBranch        *b_mMatchEmbeddedFilterMu27;   //!
    TBranch        *b_mMatchedStations;   //!
    TBranch        *b_mMatchesIsoMu19Tau20Filter;   //!
    TBranch        *b_mMatchesIsoMu19Tau20Path;   //!
@@ -1109,6 +1202,14 @@ public :
    TBranch        *b_mMatchesIsoTkMu22Path;   //!
    TBranch        *b_mMatchesIsoTkMu22eta2p1Filter;   //!
    TBranch        *b_mMatchesIsoTkMu22eta2p1Path;   //!
+   TBranch        *b_mMatchesMu23e12DZFilter;   //!
+   TBranch        *b_mMatchesMu23e12DZPath;   //!
+   TBranch        *b_mMatchesMu23e12Filter;   //!
+   TBranch        *b_mMatchesMu23e12Path;   //!
+   TBranch        *b_mMatchesMu8e23DZFilter;   //!
+   TBranch        *b_mMatchesMu8e23DZPath;   //!
+   TBranch        *b_mMatchesMu8e23Filter;   //!
+   TBranch        *b_mMatchesMu8e23Path;   //!
    TBranch        *b_mMiniIsoLoose;   //!
    TBranch        *b_mMiniIsoMedium;   //!
    TBranch        *b_mMiniIsoTight;   //!
@@ -1183,9 +1284,52 @@ public :
    TBranch        *b_npNLO;   //!
    TBranch        *b_numGenJets;   //!
    TBranch        *b_nvtx;   //!
+   TBranch        *b_prefiring_weight;   //!
+   TBranch        *b_prefiring_weight_down;   //!
+   TBranch        *b_prefiring_weight_up;   //!
    TBranch        *b_processID;   //!
    TBranch        *b_puppiMetEt;   //!
    TBranch        *b_puppiMetPhi;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEC2Down;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEC2Up;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEnDown;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEnUp;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEta0to3Down;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEta0to3Up;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEta0to5Down;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEta0to5Up;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEta3to5Down;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetEta3to5Up;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetRelativeBalDown;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetRelativeBalUp;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetRelativeSampleDown;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetRelativeSampleUp;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetTotalDown;   //!
+   TBranch        *b_puppiMet_shiftedPhi_JetTotalUp;   //!
+   TBranch        *b_puppiMet_shiftedPhi_UnclusteredEnDown;   //!
+   TBranch        *b_puppiMet_shiftedPhi_UnclusteredEnUp;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEC2Down;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEC2Up;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEnDown;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEnUp;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEta0to3Down;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEta0to3Up;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEta0to5Down;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEta0to5Up;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEta3to5Down;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetEta3to5Up;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetRelativeBalDown;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetRelativeBalUp;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetRelativeSampleDown;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetRelativeSampleUp;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetTotalDown;   //!
+   TBranch        *b_puppiMet_shiftedPt_JetTotalUp;   //!
+   TBranch        *b_puppiMet_shiftedPt_UnclusteredEnDown;   //!
+   TBranch        *b_puppiMet_shiftedPt_UnclusteredEnUp;   //!
+   TBranch        *b_puppimetcov00;   //!
+   TBranch        *b_puppimetcov01;   //!
+   TBranch        *b_puppimetcov10;   //!
+   TBranch        *b_puppimetcov11;   //!
    TBranch        *b_pvChi2;   //!
    TBranch        *b_pvDX;   //!
    TBranch        *b_pvDY;   //!
@@ -1420,6 +1564,9 @@ void HTauTauTree_em::Init(TTree* tree)
    _tree->SetBranchAddress("bjetDeepCSVVeto20Tight_2016_DR0p5", &bjetDeepCSVVeto20Tight_2016_DR0p5, &b_bjetDeepCSVVeto20Tight_2016_DR0p5);
    _tree->SetBranchAddress("bjetDeepCSVVeto20Tight_2017_DR0p5", &bjetDeepCSVVeto20Tight_2017_DR0p5, &b_bjetDeepCSVVeto20Tight_2017_DR0p5);
    _tree->SetBranchAddress("bjetDeepCSVVeto20Tight_2018_DR0p5", &bjetDeepCSVVeto20Tight_2018_DR0p5, &b_bjetDeepCSVVeto20Tight_2018_DR0p5);
+   _tree->SetBranchAddress("bweight_2016", &bweight_2016, &b_bweight_2016);
+   _tree->SetBranchAddress("bweight_2017", &bweight_2017, &b_bweight_2017);
+   _tree->SetBranchAddress("bweight_2018", &bweight_2018, &b_bweight_2018);
    _tree->SetBranchAddress("charge", &charge, &b_charge);
    _tree->SetBranchAddress("dielectronVeto", &dielectronVeto, &b_dielectronVeto);
    _tree->SetBranchAddress("dimu9ele9Pass", &dimu9ele9Pass, &b_dimu9ele9Pass);
@@ -1504,6 +1651,12 @@ void HTauTauTree_em::Init(TTree* tree)
    _tree->SetBranchAddress("eMVANoisoWP90", &eMVANoisoWP90, &b_eMVANoisoWP90);
    _tree->SetBranchAddress("eMVANoisoWPLoose", &eMVANoisoWPLoose, &b_eMVANoisoWPLoose);
    _tree->SetBranchAddress("eMass", &eMass, &b_eMass);
+   _tree->SetBranchAddress("eMatchEmbeddedFilterEle24Tau30", &eMatchEmbeddedFilterEle24Tau30, &b_eMatchEmbeddedFilterEle24Tau30);
+   _tree->SetBranchAddress("eMatchEmbeddedFilterEle27", &eMatchEmbeddedFilterEle27, &b_eMatchEmbeddedFilterEle27);
+   _tree->SetBranchAddress("eMatchEmbeddedFilterEle32", &eMatchEmbeddedFilterEle32, &b_eMatchEmbeddedFilterEle32);
+   _tree->SetBranchAddress("eMatchEmbeddedFilterEle32DoubleL1_v1", &eMatchEmbeddedFilterEle32DoubleL1_v1, &b_eMatchEmbeddedFilterEle32DoubleL1_v1);
+   _tree->SetBranchAddress("eMatchEmbeddedFilterEle32DoubleL1_v2", &eMatchEmbeddedFilterEle32DoubleL1_v2, &b_eMatchEmbeddedFilterEle32DoubleL1_v2);
+   _tree->SetBranchAddress("eMatchEmbeddedFilterEle35", &eMatchEmbeddedFilterEle35, &b_eMatchEmbeddedFilterEle35);
    _tree->SetBranchAddress("eMatchesEle24HPSTau30Filter", &eMatchesEle24HPSTau30Filter, &b_eMatchesEle24HPSTau30Filter);
    _tree->SetBranchAddress("eMatchesEle24HPSTau30Path", &eMatchesEle24HPSTau30Path, &b_eMatchesEle24HPSTau30Path);
    _tree->SetBranchAddress("eMatchesEle24Tau30Filter", &eMatchesEle24Tau30Filter, &b_eMatchesEle24Tau30Filter);
@@ -1516,6 +1669,14 @@ void HTauTauTree_em::Init(TTree* tree)
    _tree->SetBranchAddress("eMatchesEle32Path", &eMatchesEle32Path, &b_eMatchesEle32Path);
    _tree->SetBranchAddress("eMatchesEle35Filter", &eMatchesEle35Filter, &b_eMatchesEle35Filter);
    _tree->SetBranchAddress("eMatchesEle35Path", &eMatchesEle35Path, &b_eMatchesEle35Path);
+   _tree->SetBranchAddress("eMatchesMu23e12DZFilter", &eMatchesMu23e12DZFilter, &b_eMatchesMu23e12DZFilter);
+   _tree->SetBranchAddress("eMatchesMu23e12DZPath", &eMatchesMu23e12DZPath, &b_eMatchesMu23e12DZPath);
+   _tree->SetBranchAddress("eMatchesMu23e12Filter", &eMatchesMu23e12Filter, &b_eMatchesMu23e12Filter);
+   _tree->SetBranchAddress("eMatchesMu23e12Path", &eMatchesMu23e12Path, &b_eMatchesMu23e12Path);
+   _tree->SetBranchAddress("eMatchesMu8e23DZFilter", &eMatchesMu8e23DZFilter, &b_eMatchesMu8e23DZFilter);
+   _tree->SetBranchAddress("eMatchesMu8e23DZPath", &eMatchesMu8e23DZPath, &b_eMatchesMu8e23DZPath);
+   _tree->SetBranchAddress("eMatchesMu8e23Filter", &eMatchesMu8e23Filter, &b_eMatchesMu8e23Filter);
+   _tree->SetBranchAddress("eMatchesMu8e23Path", &eMatchesMu8e23Path, &b_eMatchesMu8e23Path);
    _tree->SetBranchAddress("eMissingHits", &eMissingHits, &b_eMissingHits);
    _tree->SetBranchAddress("eNearMuonVeto", &eNearMuonVeto, &b_eNearMuonVeto);
    _tree->SetBranchAddress("eNearestMuonDR", &eNearestMuonDR, &b_eNearestMuonDR);
@@ -1753,6 +1914,10 @@ void HTauTauTree_em::Init(TTree* tree)
    _tree->SetBranchAddress("mJetPt", &mJetPt, &b_mJetPt);
    _tree->SetBranchAddress("mLowestMll", &mLowestMll, &b_mLowestMll);
    _tree->SetBranchAddress("mMass", &mMass, &b_mMass);
+   _tree->SetBranchAddress("mMatchEmbeddedFilterMu20Tau27_2017", &mMatchEmbeddedFilterMu20Tau27_2017, &b_mMatchEmbeddedFilterMu20Tau27_2017);
+   _tree->SetBranchAddress("mMatchEmbeddedFilterMu20Tau27_2018", &mMatchEmbeddedFilterMu20Tau27_2018, &b_mMatchEmbeddedFilterMu20Tau27_2018);
+   _tree->SetBranchAddress("mMatchEmbeddedFilterMu24", &mMatchEmbeddedFilterMu24, &b_mMatchEmbeddedFilterMu24);
+   _tree->SetBranchAddress("mMatchEmbeddedFilterMu27", &mMatchEmbeddedFilterMu27, &b_mMatchEmbeddedFilterMu27);
    _tree->SetBranchAddress("mMatchedStations", &mMatchedStations, &b_mMatchedStations);
    _tree->SetBranchAddress("mMatchesIsoMu19Tau20Filter", &mMatchesIsoMu19Tau20Filter, &b_mMatchesIsoMu19Tau20Filter);
    _tree->SetBranchAddress("mMatchesIsoMu19Tau20Path", &mMatchesIsoMu19Tau20Path, &b_mMatchesIsoMu19Tau20Path);
@@ -1774,6 +1939,14 @@ void HTauTauTree_em::Init(TTree* tree)
    _tree->SetBranchAddress("mMatchesIsoTkMu22Path", &mMatchesIsoTkMu22Path, &b_mMatchesIsoTkMu22Path);
    _tree->SetBranchAddress("mMatchesIsoTkMu22eta2p1Filter", &mMatchesIsoTkMu22eta2p1Filter, &b_mMatchesIsoTkMu22eta2p1Filter);
    _tree->SetBranchAddress("mMatchesIsoTkMu22eta2p1Path", &mMatchesIsoTkMu22eta2p1Path, &b_mMatchesIsoTkMu22eta2p1Path);
+   _tree->SetBranchAddress("mMatchesMu23e12DZFilter", &mMatchesMu23e12DZFilter, &b_mMatchesMu23e12DZFilter);
+   _tree->SetBranchAddress("mMatchesMu23e12DZPath", &mMatchesMu23e12DZPath, &b_mMatchesMu23e12DZPath);
+   _tree->SetBranchAddress("mMatchesMu23e12Filter", &mMatchesMu23e12Filter, &b_mMatchesMu23e12Filter);
+   _tree->SetBranchAddress("mMatchesMu23e12Path", &mMatchesMu23e12Path, &b_mMatchesMu23e12Path);
+   _tree->SetBranchAddress("mMatchesMu8e23DZFilter", &mMatchesMu8e23DZFilter, &b_mMatchesMu8e23DZFilter);
+   _tree->SetBranchAddress("mMatchesMu8e23DZPath", &mMatchesMu8e23DZPath, &b_mMatchesMu8e23DZPath);
+   _tree->SetBranchAddress("mMatchesMu8e23Filter", &mMatchesMu8e23Filter, &b_mMatchesMu8e23Filter);
+   _tree->SetBranchAddress("mMatchesMu8e23Path", &mMatchesMu8e23Path, &b_mMatchesMu8e23Path);
    _tree->SetBranchAddress("mMiniIsoLoose", &mMiniIsoLoose, &b_mMiniIsoLoose);
    _tree->SetBranchAddress("mMiniIsoMedium", &mMiniIsoMedium, &b_mMiniIsoMedium);
    _tree->SetBranchAddress("mMiniIsoTight", &mMiniIsoTight, &b_mMiniIsoTight);
@@ -1848,9 +2021,52 @@ void HTauTauTree_em::Init(TTree* tree)
    _tree->SetBranchAddress("npNLO", &npNLO, &b_npNLO);
    _tree->SetBranchAddress("numGenJets", &numGenJets, &b_numGenJets);
    _tree->SetBranchAddress("nvtx", &nvtx, &b_nvtx);
+   _tree->SetBranchAddress("prefiring_weight", &prefiring_weight, &b_prefiring_weight);
+   _tree->SetBranchAddress("prefiring_weight_down", &prefiring_weight_down, &b_prefiring_weight_down);
+   _tree->SetBranchAddress("prefiring_weight_up", &prefiring_weight_up, &b_prefiring_weight_up);
    _tree->SetBranchAddress("processID", &processID, &b_processID);
    _tree->SetBranchAddress("puppiMetEt", &puppiMetEt, &b_puppiMetEt);
    _tree->SetBranchAddress("puppiMetPhi", &puppiMetPhi, &b_puppiMetPhi);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEC2Down", &puppiMet_shiftedPhi_JetEC2Down, &b_puppiMet_shiftedPhi_JetEC2Down);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEC2Up", &puppiMet_shiftedPhi_JetEC2Up, &b_puppiMet_shiftedPhi_JetEC2Up);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEnDown", &puppiMet_shiftedPhi_JetEnDown, &b_puppiMet_shiftedPhi_JetEnDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEnUp", &puppiMet_shiftedPhi_JetEnUp, &b_puppiMet_shiftedPhi_JetEnUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEta0to3Down", &puppiMet_shiftedPhi_JetEta0to3Down, &b_puppiMet_shiftedPhi_JetEta0to3Down);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEta0to3Up", &puppiMet_shiftedPhi_JetEta0to3Up, &b_puppiMet_shiftedPhi_JetEta0to3Up);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEta0to5Down", &puppiMet_shiftedPhi_JetEta0to5Down, &b_puppiMet_shiftedPhi_JetEta0to5Down);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEta0to5Up", &puppiMet_shiftedPhi_JetEta0to5Up, &b_puppiMet_shiftedPhi_JetEta0to5Up);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEta3to5Down", &puppiMet_shiftedPhi_JetEta3to5Down, &b_puppiMet_shiftedPhi_JetEta3to5Down);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetEta3to5Up", &puppiMet_shiftedPhi_JetEta3to5Up, &b_puppiMet_shiftedPhi_JetEta3to5Up);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetRelativeBalDown", &puppiMet_shiftedPhi_JetRelativeBalDown, &b_puppiMet_shiftedPhi_JetRelativeBalDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetRelativeBalUp", &puppiMet_shiftedPhi_JetRelativeBalUp, &b_puppiMet_shiftedPhi_JetRelativeBalUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetRelativeSampleDown", &puppiMet_shiftedPhi_JetRelativeSampleDown, &b_puppiMet_shiftedPhi_JetRelativeSampleDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetRelativeSampleUp", &puppiMet_shiftedPhi_JetRelativeSampleUp, &b_puppiMet_shiftedPhi_JetRelativeSampleUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetTotalDown", &puppiMet_shiftedPhi_JetTotalDown, &b_puppiMet_shiftedPhi_JetTotalDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_JetTotalUp", &puppiMet_shiftedPhi_JetTotalUp, &b_puppiMet_shiftedPhi_JetTotalUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_UnclusteredEnDown", &puppiMet_shiftedPhi_UnclusteredEnDown, &b_puppiMet_shiftedPhi_UnclusteredEnDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPhi_UnclusteredEnUp", &puppiMet_shiftedPhi_UnclusteredEnUp, &b_puppiMet_shiftedPhi_UnclusteredEnUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEC2Down", &puppiMet_shiftedPt_JetEC2Down, &b_puppiMet_shiftedPt_JetEC2Down);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEC2Up", &puppiMet_shiftedPt_JetEC2Up, &b_puppiMet_shiftedPt_JetEC2Up);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEnDown", &puppiMet_shiftedPt_JetEnDown, &b_puppiMet_shiftedPt_JetEnDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEnUp", &puppiMet_shiftedPt_JetEnUp, &b_puppiMet_shiftedPt_JetEnUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEta0to3Down", &puppiMet_shiftedPt_JetEta0to3Down, &b_puppiMet_shiftedPt_JetEta0to3Down);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEta0to3Up", &puppiMet_shiftedPt_JetEta0to3Up, &b_puppiMet_shiftedPt_JetEta0to3Up);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEta0to5Down", &puppiMet_shiftedPt_JetEta0to5Down, &b_puppiMet_shiftedPt_JetEta0to5Down);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEta0to5Up", &puppiMet_shiftedPt_JetEta0to5Up, &b_puppiMet_shiftedPt_JetEta0to5Up);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEta3to5Down", &puppiMet_shiftedPt_JetEta3to5Down, &b_puppiMet_shiftedPt_JetEta3to5Down);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetEta3to5Up", &puppiMet_shiftedPt_JetEta3to5Up, &b_puppiMet_shiftedPt_JetEta3to5Up);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetRelativeBalDown", &puppiMet_shiftedPt_JetRelativeBalDown, &b_puppiMet_shiftedPt_JetRelativeBalDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetRelativeBalUp", &puppiMet_shiftedPt_JetRelativeBalUp, &b_puppiMet_shiftedPt_JetRelativeBalUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetRelativeSampleDown", &puppiMet_shiftedPt_JetRelativeSampleDown, &b_puppiMet_shiftedPt_JetRelativeSampleDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetRelativeSampleUp", &puppiMet_shiftedPt_JetRelativeSampleUp, &b_puppiMet_shiftedPt_JetRelativeSampleUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetTotalDown", &puppiMet_shiftedPt_JetTotalDown, &b_puppiMet_shiftedPt_JetTotalDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_JetTotalUp", &puppiMet_shiftedPt_JetTotalUp, &b_puppiMet_shiftedPt_JetTotalUp);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_UnclusteredEnDown", &puppiMet_shiftedPt_UnclusteredEnDown, &b_puppiMet_shiftedPt_UnclusteredEnDown);
+   _tree->SetBranchAddress("puppiMet_shiftedPt_UnclusteredEnUp", &puppiMet_shiftedPt_UnclusteredEnUp, &b_puppiMet_shiftedPt_UnclusteredEnUp);
+   _tree->SetBranchAddress("puppimetcov00", &puppimetcov00, &b_puppimetcov00);
+   _tree->SetBranchAddress("puppimetcov01", &puppimetcov01, &b_puppimetcov01);
+   _tree->SetBranchAddress("puppimetcov10", &puppimetcov10, &b_puppimetcov10);
+   _tree->SetBranchAddress("puppimetcov11", &puppimetcov11, &b_puppimetcov11);
    _tree->SetBranchAddress("pvChi2", &pvChi2, &b_pvChi2);
    _tree->SetBranchAddress("pvDX", &pvDX, &b_pvDX);
    _tree->SetBranchAddress("pvDY", &pvDY, &b_pvDY);

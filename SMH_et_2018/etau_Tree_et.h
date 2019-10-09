@@ -17,6 +17,7 @@
 //#include "myHelper.h"
 
 using namespace std;
+float genpt_1, genpt_2, geneta_1, geneta_2;
 float met_responseUp, met_responseDown, met_resolutionUp, met_resolutionDown;
 float metphi_responseUp, metphi_responseDown, metphi_resolutionUp, metphi_resolutionDown;
 float L1iso, L1pt;
@@ -73,6 +74,11 @@ void fillTree(TTree *Run_Tree, HTauTauTree_et *tree, int entry_tree, int recoil,
     evt =tree->evt;
     genweight = tree->GenWeight;
     bweight=tree->bweight_2018;
+
+    geneta_1=tree->eGenEta;
+    geneta_2=tree->tGenEta;
+    genpt_1=tree->eGenPt;
+    genpt_2=tree->tGenPt;
 
     matchEmbFilter_Ele24Tau30_1=tree->eMatchEmbeddedFilterEle24Tau30;
     matchEmbFilter_Ele27_1=tree->eMatchEmbeddedFilterEle27;
@@ -197,14 +203,14 @@ void fillTree(TTree *Run_Tree, HTauTauTree_et *tree, int entry_tree, int recoil,
     float pfmetcorr_ey_JetEta0to3Down=mymet_JetEta0to3Down.Py();
 
     TLorentzVector mymet_JetEC2Up;
-    //mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Up,0,tree->type1_pfMet_shiftedPhi_JetEC2Up,0);
-    mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0);
+    mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Up,0,tree->type1_pfMet_shiftedPhi_JetEC2Up,0);
+    //mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0);
     float pfmetcorr_ex_JetEC2Up=mymet_JetEC2Up.Px();
     float pfmetcorr_ey_JetEC2Up=mymet_JetEC2Up.Py();
 
     TLorentzVector mymet_JetEC2Down;
-    //mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Down,0,tree->type1_pfMet_shiftedPhi_JetEC2Down,0);
-    mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0);
+    mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Down,0,tree->type1_pfMet_shiftedPhi_JetEC2Down,0);
+    //mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0);
     float pfmetcorr_ex_JetEC2Down=mymet_JetEC2Down.Px();
     float pfmetcorr_ey_JetEC2Down=mymet_JetEC2Down.Py();
 
@@ -734,30 +740,30 @@ void fillTree(TTree *Run_Tree, HTauTauTree_et *tree, int entry_tree, int recoil,
     byTightIsolationMVArun2v2DBoldDMwLT_2 = tree->tRerunMVArun2v2DBoldDMwLTTight;
     byVTightIsolationMVArun2v2DBoldDMwLT_2 = tree->tRerunMVArun2v2DBoldDMwLTVTight;
     byVVTightIsolationMVArun2v2DBoldDMwLT_2 = tree->tRerunMVArun2v2DBoldDMwLTVVTight;
-    byVVVLooseDeepVSjet_2=tree->tVVVLooseDeepTau2017v2VSjet;
-    byVVLooseDeepVSjet_2=tree->tVVLooseDeepTau2017v2VSjet;
-    byVLooseDeepVSjet_2=tree->tVLooseDeepTau2017v2VSjet;
-    byLooseDeepVSjet_2=tree->tLooseDeepTau2017v2VSjet;
-    byMediumDeepVSjet_2=tree->tMediumDeepTau2017v2VSjet;
-    byTightDeepVSjet_2=tree->tTightDeepTau2017v2VSjet;
-    byVTightDeepVSjet_2=tree->tVTightDeepTau2017v2VSjet;
-    byVVTightDeepVSjet_2=tree->tVVTightDeepTau2017v2VSjet;
-    byVVVLooseDeepVSmu_2=tree->tVVVLooseDeepTau2017v2VSmu;
-    byVVLooseDeepVSmu_2=tree->tVVLooseDeepTau2017v2VSmu;
-    byVLooseDeepVSmu_2=tree->tVLooseDeepTau2017v2VSmu;
-    byLooseDeepVSmu_2=tree->tLooseDeepTau2017v2VSmu;
-    byMediumDeepVSmu_2=tree->tMediumDeepTau2017v2VSmu;
-    byTightDeepVSmu_2=tree->tTightDeepTau2017v2VSmu;
-    byVTightDeepVSmu_2=tree->tVTightDeepTau2017v2VSmu;
-    byVVTightDeepVSmu_2=tree->tVVTightDeepTau2017v2VSmu;
-    byVVVLooseDeepVSe_2=tree->tVVVLooseDeepTau2017v2VSe;
-    byVVLooseDeepVSe_2=tree->tVVLooseDeepTau2017v2VSe;
-    byVLooseDeepVSe_2=tree->tVLooseDeepTau2017v2VSe;
-    byLooseDeepVSe_2=tree->tLooseDeepTau2017v2VSe;
-    byMediumDeepVSe_2=tree->tMediumDeepTau2017v2VSe;
-    byTightDeepVSe_2=tree->tTightDeepTau2017v2VSe;
-    byVTightDeepVSe_2=tree->tVTightDeepTau2017v2VSe;
-    byVVTightDeepVSe_2=tree->tVVTightDeepTau2017v2VSe;
+    byVVVLooseDeepVSjet_2=tree->tVVVLooseDeepTau2017v2p1VSjet;
+    byVVLooseDeepVSjet_2=tree->tVVLooseDeepTau2017v2p1VSjet;
+    byVLooseDeepVSjet_2=tree->tVLooseDeepTau2017v2p1VSjet;
+    byLooseDeepVSjet_2=tree->tLooseDeepTau2017v2p1VSjet;
+    byMediumDeepVSjet_2=tree->tMediumDeepTau2017v2p1VSjet;
+    byTightDeepVSjet_2=tree->tTightDeepTau2017v2p1VSjet;
+    byVTightDeepVSjet_2=tree->tVTightDeepTau2017v2p1VSjet;
+    byVVTightDeepVSjet_2=tree->tVVTightDeepTau2017v2p1VSjet;
+    byVVVLooseDeepVSmu_2=tree->tVVVLooseDeepTau2017v2p1VSmu;
+    byVVLooseDeepVSmu_2=tree->tVVLooseDeepTau2017v2p1VSmu;
+    byVLooseDeepVSmu_2=tree->tVLooseDeepTau2017v2p1VSmu;
+    byLooseDeepVSmu_2=tree->tLooseDeepTau2017v2p1VSmu;
+    byMediumDeepVSmu_2=tree->tMediumDeepTau2017v2p1VSmu;
+    byTightDeepVSmu_2=tree->tTightDeepTau2017v2p1VSmu;
+    byVTightDeepVSmu_2=tree->tVTightDeepTau2017v2p1VSmu;
+    byVVTightDeepVSmu_2=tree->tVVTightDeepTau2017v2p1VSmu;
+    byVVVLooseDeepVSe_2=tree->tVVVLooseDeepTau2017v2p1VSe;
+    byVVLooseDeepVSe_2=tree->tVVLooseDeepTau2017v2p1VSe;
+    byVLooseDeepVSe_2=tree->tVLooseDeepTau2017v2p1VSe;
+    byLooseDeepVSe_2=tree->tLooseDeepTau2017v2p1VSe;
+    byMediumDeepVSe_2=tree->tMediumDeepTau2017v2p1VSe;
+    byTightDeepVSe_2=tree->tTightDeepTau2017v2p1VSe;
+    byVTightDeepVSe_2=tree->tVTightDeepTau2017v2p1VSe;
+    byVVTightDeepVSe_2=tree->tVVTightDeepTau2017v2p1VSe;
 
     decayModeFinding_2=tree->tDecayModeFinding;
 

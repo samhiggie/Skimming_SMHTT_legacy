@@ -314,6 +314,11 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("gen_Higgs_pt", &gen_Higgs_pt, "gen_Higgs_pt/F");
     Run_Tree->Branch("gen_Higgs_mass", &gen_Higgs_mass, "gen_Higgs_mass/F");
 
+    Run_Tree->Branch("genpt_1", &genpt_1, "genpt_1/F");
+    Run_Tree->Branch("geneta_1", &geneta_1, "geneta_1/F");
+    Run_Tree->Branch("genpt_2", &genpt_2, "genpt_2/F");
+    Run_Tree->Branch("geneta_2", &geneta_2, "geneta_2/F");
+
     int bestEntry=-1;
     ULong64_t evt_now=0;
     ULong64_t evt_before=-1;
@@ -347,12 +352,13 @@ int main(int argc, char** argv) {
 	if (fabs(tree->mPVDXY)>0.045) continue;
         if (fabs(tree->mPVDZ)>0.2) continue;
         if (fabs(tree->tPVDZ)>0.2) continue;
-	if (dau1.Pt()<19 or dau2.Pt()<29) continue;
+	if (dau1.Pt()<19.5 or dau2.Pt()<29.5) continue;
         if (fabs(dau1.Eta())>2.4 or fabs(dau2.Eta())>2.3) continue;
-        if (!tree->tRerunMVArun2v2DBoldDMwLTVLoose and !tree->tVVVLooseDeepTau2017v2VSjet) continue;
-        if (!tree->tAgainstMuonLoose3 and !tree->tVVVLooseDeepTau2017v2VSmu) continue;
-        if (!tree->tAgainstElectronVLooseMVA62018 and !tree->tAgainstElectronVLooseMVA6 and !tree->tVVVLooseDeepTau2017v2VSe) continue;
+        if (!tree->tRerunMVArun2v2DBoldDMwLTVLoose and !tree->tVVVLooseDeepTau2017v2p1VSjet) continue;
+        if (!tree->tAgainstMuonLoose3 and !tree->tVLooseDeepTau2017v2p1VSmu) continue;
+        if (!tree->tAgainstElectronVLooseMVA62018 and !tree->tAgainstElectronVLooseMVA6 and !tree->tVVVLooseDeepTau2017v2p1VSe) continue;
         if (tree->tDecayMode==5 or tree->tDecayMode==6) continue;
+        if (tree->mRelPFIsoDBDefault>0.5) continue;
 	if (!tree->mPFIDMedium) continue;
 	if (tree->eVetoZTTp001dxyzR0>0) continue;
 	if (tree->muVetoZTTp001dxyzR0>1) continue;

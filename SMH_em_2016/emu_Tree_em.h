@@ -16,7 +16,7 @@
 #include "MEtSys.h"
 
 using namespace std;
-float pt_1_ScaleUp, pt_1_ScaleDown, pt_1_SigmaUp, pt_1_SigmaDown, bweight;
+float pt_1_ScaleUp, pt_1_ScaleDown, pt_1_SigmaUp, pt_1_SigmaDown;
 float jpt_JetRelativeSampleUp_1, jpt_JetRelativeSampleDown_1, jpt_JetRelativeBalUp_1, jpt_JetRelativeBalDown_1, jpt_JetEta0to3Up_1, jpt_JetEta0to3Down_1, jpt_JetEta3to5Up_1, jpt_JetEta3to5Down_1, jpt_JetEta0to5Up_1, jpt_JetEta0to5Down_1, jpt_JetEC2Up_1, jpt_JetEC2Down_1;
 float jpt_JetRelativeSampleUp_2, jpt_JetRelativeSampleDown_2, jpt_JetRelativeBalUp_2, jpt_JetRelativeBalDown_2, jpt_JetEta0to3Up_2, jpt_JetEta0to3Down_2, jpt_JetEta3to5Up_2, jpt_JetEta3to5Down_2, jpt_JetEta0to5Up_2, jpt_JetEta0to5Down_2, jpt_JetEC2Up_2, jpt_JetEC2Down_2;
 float met_responseUp, met_responseDown, met_resolutionUp, met_resolutionDown;
@@ -61,6 +61,7 @@ float met_px, met_py,genpX,genpY,vispX,vispY,metSig,genpT,genM;
 float pt_top1, pt_top2, genweight;
 float decayModeFinding_2, againstElectronTightMVA6_2, againstElectronVTightMVA6_2, againstElectronVLooseMVA6_2, againstElectronMediumMVA6_2, againstElectronLooseMVA6_2, againstMuonLoose3_2, againstMuonTight3_2;
 float Flag_BadChargedCandidateFilter, Flag_BadPFMuonFilter, Flag_EcalDeadCellTriggerPrimitiveFilter, Flag_HBHENoiseFilter, Flag_HBHENoiseIsoFilter, Flag_badCloneMuon, Flag_badGlobalMuon, Flag_eeBadScFilter, Flag_globalTightHalo2016Filter, Flag_goodVertices, Flag_globalSuperTightHalo2016Filter, Flag_badMuons, Flag_duplicateMuons, Flag_ecalBadCalibFilter, Flag_ecalBadCalibReducedMINIAODFilter;
+float bweight, genpt_1, genpt_2, geneta_1, geneta_2, prefiring_weight,prefiring_weight_up, prefiring_weight_down;
 
 RecoilCorrector recoilPFMetCorrector("SMH_et_2016/HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root");
 MEtSys metSys("SMH_et_2016/HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root");
@@ -72,6 +73,14 @@ void fillTree(TTree *Run_Tree, HTauTauTree_em *tree, int entry_tree, int recoil,
     evt =tree->evt;
     genweight = tree->GenWeight;
     bweight=tree->bweight_2016;
+    prefiring_weight=tree->prefiring_weight;
+    prefiring_weight_up=tree->prefiring_weight_up;
+    prefiring_weight_down=tree->prefiring_weight_down;
+
+    geneta_1=tree->eGenEta;
+    geneta_2=tree->mGenEta;
+    genpt_1=tree->eGenPt;
+    genpt_2=tree->mGenPt;
 
     passMu8E23=tree->mu8e23Pass;
     passMu23E12=tree->mu23e12Pass;
@@ -198,14 +207,14 @@ void fillTree(TTree *Run_Tree, HTauTauTree_em *tree, int entry_tree, int recoil,
     float pfmetcorr_ey_JetEta0to3Down=mymet_JetEta0to3Down.Py();
 
     TLorentzVector mymet_JetEC2Up;
-    //mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Up,0,tree->type1_pfMet_shiftedPhi_JetEC2Up,0);
-    mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0); //FIXME
+    mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Up,0,tree->type1_pfMet_shiftedPhi_JetEC2Up,0);
+    //mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0); //FIXME
     float pfmetcorr_ex_JetEC2Up=mymet_JetEC2Up.Px();
     float pfmetcorr_ey_JetEC2Up=mymet_JetEC2Up.Py();
 
     TLorentzVector mymet_JetEC2Down;
-    //mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Down,0,tree->type1_pfMet_shiftedPhi_JetEC2Down,0);
-    mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0);
+    mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Down,0,tree->type1_pfMet_shiftedPhi_JetEC2Down,0);
+    //mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0);
     float pfmetcorr_ex_JetEC2Down=mymet_JetEC2Down.Px();
     float pfmetcorr_ey_JetEC2Down=mymet_JetEC2Down.Py();
 

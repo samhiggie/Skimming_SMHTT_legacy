@@ -1,7 +1,7 @@
 import os
 if __name__ == "__main__":
 
-#    place="/hdfs/store/user/caillol/SMHTT_2018_data/"
+#    place="/hdfs/store/user/caillol/SMHTT_2018_17sep_data/"
 #    datatype="data"
 #    name=[
 #"data_SingleMuon_Run2018A-17Sep2018","DataA","0",
@@ -10,7 +10,7 @@ if __name__ == "__main__":
 #"data_SingleMuon_Run2018D-PromptReco","DataD","0"
 #]
 #
-#    place="/hdfs/store/user/caillol/SMHTT_2018_legacy_MC_17jul/"
+#    place="/hdfs/store/user/caillol/SMHTT_2018_17sep_mc/"
 #    datatype="mc"
 #    name=[
 #"DY1JetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8_-102X_upgrade2018_realistic_v15-v1","DY1_v1","Z",
@@ -34,8 +34,10 @@ if __name__ == "__main__":
 #"ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1","ST_tW_antitop","0",
 #"ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1","ST_tW_top","0",
 ##"TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTTo2L2Nu","0",
-##"TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTToHadronic","0",
-##"TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTToSemiLeptonic","0",
+#"TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTToHadronic_v1","0",
+#"TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext2-v2","TTToHadronic_v2","0",
+#"TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTToSemiLeptonic_v1","0",
+#"TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext3-v2","TTToSemiLeptonic_v2","0",
 #"VBFHToTauTau_M125_13TeV_powheg_pythia8_-102X_upgrade2018_realistic_v15_ext1-v1","VBFHTT","Z",
 #"W1JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-102X_upgrade2018_realistic_v15-v2","W1_v1","W",
 #"W2JetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-102X_upgrade2018_realistic_v15-v1","W2_v1","W",
@@ -61,30 +63,26 @@ if __name__ == "__main__":
 #"HWplusJ_HToWW_M125_13TeV_powheg_jhugen724_pythia8_TuneCP5_-102X_upgrade2018_realistic_v15-v1","WplusHWW","0",
 #"VBFHToWWTo2L2Nu_M125_13TeV_powheg2_JHUGenV714_pythia8_-102X_upgrade2018_realistic_v15-v1","VBFHWW","0",
 #"ggZH_HToTauTau_ZToNuNu_M125_13TeV_powheg_pythia8_-102X_upgrade2018_realistic_v15-v1","GGZHNNTT","0",
-#"GluGluZH_HToWW_M125_13TeV_powheg_pythia8_TuneCP5_PSweights_-102X_upgrade2018_realistic_v15-v1","GGZHWW","0",
-#"GluGluHToWWTo2L2Nu_M125_13TeV_powheg2_JHUGenV714_pythia8_-102X_upgrade2018_realistic_v15-v1","GGHWW","0",
 #"ggZH_HToTauTau_ZToLL_M125_13TeV_powheg_pythia8_-102X_upgrade2018_realistic_v15-v1","GGZHLLTT","0"
 #]
 #
-#    place="/hdfs/store/user/caillol/SMHTT_2018_legacy_MC_25jul/"
-#    datatype="mc"
-#    name=[
-#"TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTTo2L2Nu","0",
-#"TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTToHadronic","0",
-#"TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTToSemiLeptonic","0"
-#]
-
-    place="/hdfs/store/user/caillol/SMHTT_2018_embedded_triggerFilters/"
-    datatype="data"
+    place="/hdfs/store/user/caillol/SMHTT_2018_17sep_mc_TT2L2Nu_etmt/"
+    datatype="mc"
     name=[
-"embedded_EmbeddingRun2018A_MuTauFinalState","EmbeddedA","0",
-"embedded_EmbeddingRun2018B_MuTauFinalState","EmbeddedB","0",
-"embedded_EmbeddingRun2018C_MuTauFinalState","EmbeddedC","0",
-"embedded_EmbeddingRun2018D_MuTauFinalState","EmbeddedD","0"
+"TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1","TTTo2L2Nu","0"
 ]
 
+#    place="/hdfs/store/user/caillol/SMHTT_2018_17sep_embedded/"
+#    datatype="data"
+#    name=[
+#"embedded_EmbeddingRun2018A_MuTauFinalState","EmbeddedA","0",
+#"embedded_EmbeddingRun2018B_MuTauFinalState","EmbeddedB","0",
+#"embedded_EmbeddingRun2018C_MuTauFinalState","EmbeddedC","0",
+#"embedded_EmbeddingRun2018D_MuTauFinalState","EmbeddedD","0"
+#]
+
     
-    datadir="/nfs_scratch/caillol/smhmt2018_15aug/"
+    datadir="/nfs_scratch/caillol/smhmt2018_30sep/"
     all_File = open("do_submit_mt.sh" , 'w')
     line=""
     for j in range(0,len(name)/3):

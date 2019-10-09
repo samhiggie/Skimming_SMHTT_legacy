@@ -243,6 +243,15 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("gen_match_1", &gen_match_1, "gen_match_1/I");
     Run_Tree->Branch("gen_match_2", &gen_match_2, "gen_match_2/I");
 
+    Run_Tree->Branch("genpt_1", &genpt_1, "genpt_1/F");
+    Run_Tree->Branch("geneta_1", &geneta_1, "geneta_1/F");
+    Run_Tree->Branch("genpt_2", &genpt_2, "genpt_2/F");
+    Run_Tree->Branch("geneta_2", &geneta_2, "geneta_2/F");
+
+    Run_Tree->Branch("prefiring_weight", &prefiring_weight, "prefiring_weight/F");
+    Run_Tree->Branch("prefiring_weight_up", &prefiring_weight_up, "prefiring_weight_up/F");
+    Run_Tree->Branch("prefiring_weight_down", &prefiring_weight_down, "prefiring_weight_down/F");
+
     Run_Tree->Branch("nbtag", &nbtag, "nbtag/I");
     Run_Tree->Branch("nbtagL", &nbtagL, "nbtagL/I");
     Run_Tree->Branch("bweight", &bweight, "bweight/F");
@@ -350,10 +359,11 @@ int main(int argc, char** argv) {
         if (fabs(tree->tPVDZ)>0.2) continue;
 	if (dau1.Pt()<24 or dau2.Pt()<29.5) continue;
         if (fabs(dau1.Eta())>2.5 or fabs(dau2.Eta())>2.3) continue;
-        if (!tree->tRerunMVArun2v2DBoldDMwLTVLoose and !tree->tVVVLooseDeepTau2017v2VSjet) continue;
-        if (!tree->tAgainstMuonLoose3 and !tree->tVVVLooseDeepTau2017v2VSmu) continue;
-        if (!tree->tAgainstElectronVLooseMVA62018 and !tree->tAgainstElectronVLooseMVA6 and !tree->tVVVLooseDeepTau2017v2VSe) continue;
+        if (!tree->tRerunMVArun2v2DBoldDMwLTVLoose and !tree->tVVVLooseDeepTau2017v2p1VSjet) continue;
+        if (!tree->tAgainstMuonLoose3 and !tree->tVLooseDeepTau2017v2p1VSmu) continue;
+        if (!tree->tAgainstElectronVLooseMVA62018 and !tree->tAgainstElectronVLooseMVA6 and !tree->tVVVLooseDeepTau2017v2p1VSe) continue;
         if (tree->tDecayMode==5 or tree->tDecayMode==6) continue;
+	if (tree->eRelPFIsoRho>0.5) continue;
 	if (!tree->eMVANoisoWP90) continue;
 	if (!tree->ePassesConversionVeto or tree->eMissingHits>1) continue;
 	if (tree->eVetoZTTp001dxyzR0>1) continue;

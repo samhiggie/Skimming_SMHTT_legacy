@@ -290,6 +290,11 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("jcsv_1", &jcsv_1, "jcsv_1/F");
     Run_Tree->Branch("jcsv_2", &jcsv_2, "jcsv_2/F");
 
+    Run_Tree->Branch("genpt_1", &genpt_1, "genpt_1/F");
+    Run_Tree->Branch("geneta_1", &geneta_1, "geneta_1/F");
+    Run_Tree->Branch("genpt_2", &genpt_2, "genpt_2/F");
+    Run_Tree->Branch("geneta_2", &geneta_2, "geneta_2/F");
+
     Run_Tree->Branch("jpt_JetEta0to3Up_1", &jpt_JetEta0to3Up_1, "jpt_JetEta0to3Up_1/F");
     Run_Tree->Branch("jpt_JetEta0to3Down_1", &jpt_JetEta0to3Down_1, "jpt_JetEta0to3Down_1/F");
     Run_Tree->Branch("jpt_JetEC2Up_1", &jpt_JetEC2Up_1, "jpt_JetEC2Up_1/F");
@@ -370,9 +375,10 @@ int main(int argc, char** argv) {
         if (fabs(tree->tPVDZ)>0.2) continue;
 	if (dau1.Pt()<24 or dau2.Pt()<29.5) continue;
         if (fabs(dau1.Eta())>2.5 or fabs(dau2.Eta())>2.3) continue;
-        if (!tree->tRerunMVArun2v2DBoldDMwLTVLoose and !tree->tVVVLooseDeepTau2017v2VSjet) continue;
-        if (!tree->tAgainstMuonLoose3 and !tree->tVVVLooseDeepTau2017v2VSmu) continue;
-        if (!tree->tAgainstElectronVLooseMVA62018 and !tree->tAgainstElectronVLooseMVA6 and !tree->tVVVLooseDeepTau2017v2VSe) continue;
+        if (!tree->tRerunMVArun2v2DBoldDMwLTVLoose and !tree->tVVVLooseDeepTau2017v2p1VSjet) continue;
+        if (!tree->tAgainstMuonLoose3 and !tree->tVLooseDeepTau2017v2p1VSmu) continue;
+        if (!tree->tAgainstElectronVLooseMVA62018 and !tree->tAgainstElectronVLooseMVA6 and !tree->tVVVLooseDeepTau2017v2p1VSe) continue;
+	if (tree->eRelPFIsoRho>0.5) continue;
         if (tree->tDecayMode==5 or tree->tDecayMode==6) continue;
 	if (!tree->eMVANoisoWP90) continue;
 	if (!tree->ePassesConversionVeto or tree->eMissingHits>1) continue;

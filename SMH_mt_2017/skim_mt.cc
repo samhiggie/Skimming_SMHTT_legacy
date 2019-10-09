@@ -61,6 +61,11 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("vispX", &vispX, "vispX/F");
     Run_Tree->Branch("vispY", &vispY, "vispY/F");
 
+    Run_Tree->Branch("prefiring_weight", &prefiring_weight, "prefiring_weight/F");
+    Run_Tree->Branch("prefiring_weight_up", &prefiring_weight_up, "prefiring_weight_up/F");
+    Run_Tree->Branch("prefiring_weight_down", &prefiring_weight_down, "prefiring_weight_down/F");
+    Run_Tree->Branch("bweight", &bweight, "bweight/F");
+
     Run_Tree->Branch("Rivet_VEta", &Rivet_VEta, "Rivet_VEta/F");
     Run_Tree->Branch("Rivet_VPt", &Rivet_VPt, "Rivet_VPt/F");
     Run_Tree->Branch("Rivet_errorCode", &Rivet_errorCode, "Rivet_errorCode/F");
@@ -301,6 +306,16 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("gen_Higgs_pt", &gen_Higgs_pt, "gen_Higgs_pt/F");
     Run_Tree->Branch("gen_Higgs_mass", &gen_Higgs_mass, "gen_Higgs_mass/F");
 
+    Run_Tree->Branch("genpt_1", &genpt_1, "genpt_1/F");
+    Run_Tree->Branch("geneta_1", &geneta_1, "geneta_1/F");
+    Run_Tree->Branch("genpt_2", &genpt_2, "genpt_2/F");
+    Run_Tree->Branch("geneta_2", &geneta_2, "geneta_2/F");
+
+    Run_Tree->Branch("matchEmbFilter_Mu20Tau27_1", &matchEmbFilter_Mu20Tau27_1, "matchEmbFilter_Mu20Tau27_1/F");
+    Run_Tree->Branch("matchEmbFilter_Mu24_1", &matchEmbFilter_Mu24_1, "matchEmbFilter_Mu24_1/F");
+    Run_Tree->Branch("matchEmbFilter_Mu27_1", &matchEmbFilter_Mu27_1, "matchEmbFilter_Mu27_1/F");
+    Run_Tree->Branch("matchEmbFilter_Mu20Tau27_2", &matchEmbFilter_Mu20Tau27_2, "matchEmbFilter_Mu20Tau27_2/F");
+
     int bestEntry=-1;
     ULong64_t evt_now=0;
     ULong64_t evt_before=-1;
@@ -335,9 +350,9 @@ int main(int argc, char** argv) {
         if (fabs(tree->tPVDZ)>0.2) continue;
 	if (dau1.Pt()<19.5 or dau2.Pt()<29.5) continue;
         if (fabs(dau1.Eta())>2.4 or fabs(dau2.Eta())>2.3) continue;
-        if (!tree->tRerunMVArun2v2DBoldDMwLTVLoose and !tree->tVVVLooseDeepTau2017v2VSjet) continue;
-	if (!tree->tAgainstMuonLoose3 and !tree->tVVVLooseDeepTau2017v2VSmu) continue;
-	if (!tree->tAgainstElectronVLooseMVA62018 and !tree->tAgainstElectronVLooseMVA6 and !tree->tVVVLooseDeepTau2017v2VSe) continue;
+        if (!tree->tRerunMVArun2v2DBoldDMwLTVLoose and !tree->tVVVLooseDeepTau2017v2p1VSjet) continue;
+	if (!tree->tAgainstMuonLoose3 and !tree->tVLooseDeepTau2017v2p1VSmu) continue;
+	if (!tree->tAgainstElectronVLooseMVA62018 and !tree->tAgainstElectronVLooseMVA6 and !tree->tVVVLooseDeepTau2017v2p1VSe) continue;
 	if (tree->tDecayMode==5 or tree->tDecayMode==6) continue;
 	if (!tree->mPFIDMedium) continue;
 	if (tree->mRelPFIsoDBDefault>0.5) continue;

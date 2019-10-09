@@ -61,6 +61,11 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("vispX", &vispX, "vispX/F");
     Run_Tree->Branch("vispY", &vispY, "vispY/F");
 
+    Run_Tree->Branch("prefiring_weight", &prefiring_weight, "prefiring_weight/F");
+    Run_Tree->Branch("prefiring_weight_up", &prefiring_weight_up, "prefiring_weight_up/F");
+    Run_Tree->Branch("prefiring_weight_down", &prefiring_weight_down, "prefiring_weight_down/F");
+    Run_Tree->Branch("bweight", &bweight, "bweight/F");
+
     Run_Tree->Branch("Rivet_VEta", &Rivet_VEta, "Rivet_VEta/F");
     Run_Tree->Branch("Rivet_VPt", &Rivet_VPt, "Rivet_VPt/F");
     Run_Tree->Branch("Rivet_errorCode", &Rivet_errorCode, "Rivet_errorCode/F");
@@ -177,6 +182,11 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("mjj_JetEC2Down", &mjj_JetEC2Down, "mjj_JetEC2Down/F");
     Run_Tree->Branch("gen_match_1", &gen_match_1, "gen_match_1/I");
     Run_Tree->Branch("gen_match_2", &gen_match_2, "gen_match_2/I");
+
+    Run_Tree->Branch("genpt_1", &genpt_1, "genpt_1/F");
+    Run_Tree->Branch("geneta_1", &geneta_1, "geneta_1/F");
+    Run_Tree->Branch("genpt_2", &genpt_2, "genpt_2/F");
+    Run_Tree->Branch("geneta_2", &geneta_2, "geneta_2/F");
 
     Run_Tree->Branch("nbtag", &nbtag, "nbtag/I");
     Run_Tree->Branch("nbtagL", &nbtagL, "nbtagL/I");

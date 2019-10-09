@@ -57,6 +57,7 @@ float met_px, met_py,genpX,genpY,vispX,vispY,metSig,genpT,genM;
 float pt_top1, pt_top2, genweight, bweight;
 float decayModeFinding_2, againstElectronTightMVA6_2, againstElectronVTightMVA6_2, againstElectronVLooseMVA6_2, againstElectronMediumMVA6_2, againstElectronLooseMVA6_2, againstMuonLoose3_2, againstMuonTight3_2;
 float Flag_BadChargedCandidateFilter, Flag_BadPFMuonFilter, Flag_EcalDeadCellTriggerPrimitiveFilter, Flag_HBHENoiseFilter, Flag_HBHENoiseIsoFilter, Flag_badCloneMuon, Flag_badGlobalMuon, Flag_eeBadScFilter, Flag_globalTightHalo2016Filter, Flag_goodVertices, Flag_globalSuperTightHalo2016Filter, Flag_badMuons, Flag_duplicateMuons, Flag_ecalBadCalibFilter, Flag_ecalBadCalibReducedMINIAODFilter;
+float genpt_1, genpt_2, geneta_1, geneta_2;
 
 RecoilCorrector recoilPFMetCorrector("SMH_et_2016/HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root");
 MEtSys metSys("SMH_et_2016/HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root");
@@ -68,6 +69,11 @@ void fillTree(TTree *Run_Tree, HTauTauTree_em *tree, int entry_tree, int recoil,
     evt =tree->evt;
     genweight = tree->GenWeight;
     bweight=tree->bweight_2018;
+
+    geneta_1=tree->eGenEta;
+    geneta_2=tree->mGenEta;
+    genpt_1=tree->eGenPt;
+    genpt_2=tree->mGenPt;
 
     passMu8E23=tree->mu8e23DZPass;
     passMu23E12=tree->mu23e12DZPass;

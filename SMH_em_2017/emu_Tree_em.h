@@ -61,9 +61,10 @@ float met_px, met_py,genpX,genpY,vispX,vispY,metSig,genpT,genM;
 float pt_top1, pt_top2, genweight;
 float decayModeFinding_2, againstElectronTightMVA6_2, againstElectronVTightMVA6_2, againstElectronVLooseMVA6_2, againstElectronMediumMVA6_2, againstElectronLooseMVA6_2, againstMuonLoose3_2, againstMuonTight3_2;
 float Flag_BadChargedCandidateFilter, Flag_BadPFMuonFilter, Flag_EcalDeadCellTriggerPrimitiveFilter, Flag_HBHENoiseFilter, Flag_HBHENoiseIsoFilter, Flag_badCloneMuon, Flag_badGlobalMuon, Flag_eeBadScFilter, Flag_globalTightHalo2016Filter, Flag_goodVertices, Flag_globalSuperTightHalo2016Filter, Flag_badMuons, Flag_duplicateMuons, Flag_ecalBadCalibFilter, Flag_ecalBadCalibReducedMINIAODFilter;
+float bweight, genpt_1, genpt_2, geneta_1, geneta_2, prefiring_weight,prefiring_weight_up, prefiring_weight_down;
 
-RecoilCorrector recoilPFMetCorrector("SMH_et_2016/HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2016_legacy.root");
-MEtSys metSys("SMH_et_2016/HTT-utilities/RecoilCorrections/data/PFMEtSys_2016.root");
+RecoilCorrector recoilPFMetCorrector("SMH_et_2016/HTT-utilities/RecoilCorrections/data/Type1_PFMET_2017.root");
+MEtSys metSys("SMH_et_2016/HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root");
 
 void fillTree(TTree *Run_Tree, HTauTauTree_em *tree, int entry_tree, int recoil, bool ismc){
     tree->GetEntry(entry_tree);
@@ -72,27 +73,37 @@ void fillTree(TTree *Run_Tree, HTauTauTree_em *tree, int entry_tree, int recoil,
     evt =tree->evt;
     genweight = tree->GenWeight;
 
+    bweight=tree->bweight_2017;
+    prefiring_weight=tree->prefiring_weight;
+    prefiring_weight_up=tree->prefiring_weight_up;
+    prefiring_weight_down=tree->prefiring_weight_down;
+
+    geneta_1=tree->eGenEta;
+    geneta_2=tree->mGenEta;
+    genpt_1=tree->eGenPt;
+    genpt_2=tree->mGenPt;
+
     passMu8E23=tree->mu8e23Pass;
     passMu23E12=tree->mu23e12Pass;
-    matchMu8E23_1=1;//FIXME
-    matchMu23E12_1=1;//FIXME
-    filterMu8E23_1=1;//FIXME
-    filterMu23E12_1=1;//FIXME
-    matchMu8E23_2=1;//FIXME
-    matchMu23E12_2=1;//FIXME
-    filterMu8E23_2=1;//FIXME
-    filterMu23E12_2=1;//FIXME
+    matchMu8E23_1=tree->eMatchesMu8e23Path;//FIXME
+    matchMu23E12_1=tree->eMatchesMu23e12Path;//FIXME
+    filterMu8E23_1=tree->eMatchesMu8e23Filter;//FIXME
+    filterMu23E12_1=tree->eMatchesMu23e12Filter;//FIXME
+    matchMu8E23_2=tree->mMatchesMu8e23Path;//FIXME
+    matchMu23E12_2=tree->mMatchesMu23e12Path;//FIXME
+    filterMu8E23_2=tree->mMatchesMu8e23Filter;//FIXME
+    filterMu23E12_2=tree->mMatchesMu23e12Filter;//FIXME
 
     passMu8E23DZ=tree->mu8e23DZPass;
     passMu23E12DZ=tree->mu23e12DZPass;
-    matchMu8E23DZ_1=1;//FIXME
-    matchMu23E12DZ_1=1;//FIXME
-    filterMu8E23DZ_1=1;//FIXME
-    filterMu23E12DZ_1=1;//FIXME
-    matchMu8E23DZ_2=1;//FIXME
-    matchMu23E12DZ_2=1;//FIXME
-    filterMu8E23DZ_2=1;//FIXME
-    filterMu23E12DZ_2=1;//FIXME
+    matchMu8E23DZ_1=tree->eMatchesMu8e23DZPath;//FIXME
+    matchMu23E12DZ_1=tree->eMatchesMu23e12DZPath;//FIXME
+    filterMu8E23DZ_1=tree->eMatchesMu8e23DZFilter;//FIXME
+    filterMu23E12DZ_1=tree->eMatchesMu23e12DZFilter;//FIXME
+    matchMu8E23DZ_2=tree->mMatchesMu8e23DZPath;//FIXME
+    matchMu23E12DZ_2=tree->mMatchesMu23e12DZPath;//FIXME
+    filterMu8E23DZ_2=tree->mMatchesMu8e23DZFilter;//FIXME
+    filterMu23E12DZ_2=tree->mMatchesMu23e12DZFilter;//FIXME
 
     Rivet_VEta=tree->Rivet_VEta;
     Rivet_VPt=tree->Rivet_VPt;
@@ -198,13 +209,11 @@ void fillTree(TTree *Run_Tree, HTauTauTree_em *tree, int entry_tree, int recoil,
 
     TLorentzVector mymet_JetEC2Up;
     mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Up,0,tree->type1_pfMet_shiftedPhi_JetEC2Up,0);
-    //mymet_JetEC2Up.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0); //FIXME
     float pfmetcorr_ex_JetEC2Up=mymet_JetEC2Up.Px();
     float pfmetcorr_ey_JetEC2Up=mymet_JetEC2Up.Py();
 
     TLorentzVector mymet_JetEC2Down;
     mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMet_shiftedPt_JetEC2Down,0,tree->type1_pfMet_shiftedPhi_JetEC2Down,0);
-    //mymet_JetEC2Down.SetPtEtaPhiM(tree->type1_pfMetEt,0,tree->type1_pfMetPhi,0);
     float pfmetcorr_ex_JetEC2Down=mymet_JetEC2Down.Px();
     float pfmetcorr_ey_JetEC2Down=mymet_JetEC2Down.Py();
 
