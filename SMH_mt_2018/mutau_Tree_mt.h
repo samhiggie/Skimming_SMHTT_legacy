@@ -39,6 +39,9 @@ float passMu24, passMu27, passMu20Tau27, passMu20HPSTau27;
 float matchMu24_1, matchMu27_1, matchMu20Tau27_1, matchMu20Tau27_2, matchMu20HPSTau27_1, matchMu20HPSTau27_2;
 float filterMu24_1, filterMu27_1, filterMu20Tau27_1, filterMu20Tau27_2, filterMu20HPSTau27_1, filterMu20HPSTau27_2;
 float byVVLooseIsolationMVArun2v2DBoldDMwLT_2, byVLooseIsolationMVArun2v2DBoldDMwLT_2, byLooseIsolationMVArun2v2DBoldDMwLT_2, byMediumIsolationMVArun2v2DBoldDMwLT_2, byTightIsolationMVArun2v2DBoldDMwLT_2, byVTightIsolationMVArun2v2DBoldDMwLT_2, byVVTightIsolationMVArun2v2DBoldDMwLT_2, byIsolationMVArun2v2DBoldDMwLTraw_2, byIsolationMVA3oldDMwLTraw_2;
+
+float byVLooseIsolationMVArun2v1DBoldDMwLT_2;
+
 float Rivet_VEta,Rivet_VPt,Rivet_errorCode,Rivet_higgsEta,Rivet_higgsPt,Rivet_nJets25,Rivet_nJets30,Rivet_p4decay_VEta,Rivet_p4decay_VPt,Rivet_prodMode,Rivet_stage0_cat,Rivet_stage1_cat_pTjet25GeV,Rivet_stage1_cat_pTjet30GeV, Rivet_stage1p1_cat;
 unsigned int run, lumi, evt, NUP = -10;
 int gen_match_1, gen_match_2=0;
@@ -61,8 +64,8 @@ float Flag_BadChargedCandidateFilter, Flag_BadPFMuonFilter, Flag_EcalDeadCellTri
 float matchEmbFilter_Mu20Tau27_1,matchEmbFilter_Mu24_1,matchEmbFilter_Mu27_1,matchEmbFilter_Mu20Tau27_2,matchEmbFilter_Mu20HPSTau27_2;
 float genpt_1, genpt_2, geneta_1, geneta_2;
 
-RecoilCorrector recoilPFMetCorrector("SMH_et_2016/HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root");
-MEtSys metSys("SMH_et_2016/HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root");
+RecoilCorrector recoilPFMetCorrector("Skimming_SMHTT_legacy/SMH_et_2016/HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root");
+MEtSys metSys("Skimming_SMHTT_legacy/SMH_et_2016/HTT-utilities/RecoilCorrections/data/PFMEtSys_2017.root");
 
 void fillTree(TTree *Run_Tree, HTauTauTree_mt *tree, int entry_tree, int recoil, bool ismc){
     tree->GetEntry(entry_tree);
@@ -705,6 +708,9 @@ void fillTree(TTree *Run_Tree, HTauTauTree_mt *tree, int entry_tree, int recoil,
     byIsolationMVA3oldDMwLTraw_2=tree->tRerunMVArun2v2DBoldDMwLTraw;
     byVVLooseIsolationMVArun2v2DBoldDMwLT_2 = tree->tRerunMVArun2v2DBoldDMwLTVVLoose;
     byVLooseIsolationMVArun2v2DBoldDMwLT_2 = tree->tRerunMVArun2v2DBoldDMwLTVLoose;
+
+    byVLooseIsolationMVArun2v1DBoldDMwLT_2 = tree->tByVLooseIsolationMVArun2v1DBoldDMwLT;
+
     byLooseIsolationMVArun2v2DBoldDMwLT_2 = tree->tRerunMVArun2v2DBoldDMwLTLoose;
     byMediumIsolationMVArun2v2DBoldDMwLT_2 = tree->tRerunMVArun2v2DBoldDMwLTMedium;
     byTightIsolationMVArun2v2DBoldDMwLT_2 = tree->tRerunMVArun2v2DBoldDMwLTTight;

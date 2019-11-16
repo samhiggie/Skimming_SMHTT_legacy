@@ -17,7 +17,8 @@ class RecoilCorrector {
   TString cmsswBase = TString( getenv ("CMSSW_BASE") );
   TString baseDir = cmsswBase + "/src";
 
-  _fileName = baseDir+"/"+fileName;
+  //_fileName = baseDir+"/"+fileName;
+  _fileName = "/afs/hep.wisc.edu/home/samuellh/WorkingArea/HTT/mutau2018/src/HTT-utilities/RecoilCorrections/data/TypeI-PFMet_Run2018.root";
   TFile * file = new TFile(_fileName);
   if (file->IsZombie()) {
     std::cout << "file " << _fileName << " is not found...   quitting " << std::endl;

@@ -18,7 +18,7 @@
 #include "TLorentzVector.h"
 #include "TRandom3.h"
 #include "makeHisto.h"
-#include "mutau_Tree_mt.h"
+#include "mutau_Tree_mt_jec.h"
 
 int main(int argc, char** argv) {
 
@@ -47,6 +47,58 @@ int main(int argc, char** argv) {
     TH1F *evCounter = (TH1F*) fIn->Get("mt/eventCount");
     TH1F *evCounterW = (TH1F*) fIn->Get("mt/summedWeights");
     HTauTauTree_mt* tree = new HTauTauTree_mt (treePtr);
+
+    fillVectors();
+
+    //setting up vectors for all the JEC uncertainties 
+    std::vector<std::string> uncertNames = {
+    "AbsoluteFlavMap",
+    "AbsoluteMPFBias",
+    "AbsoluteScale",
+    "AbsoluteStat",
+    "AbsoluteSample",
+    "FlavorQCD",
+    "Fragmentation",
+    "PileUpDataMC",
+    "PileUpPtBB",
+    "PileUpPtEC1",
+    "PileUpPtEC2",
+    "PileUpPtHF",
+    "PileUpPtRef",
+    "RelativeBal",
+    "RelativeSample",
+    "RelativeFSR",
+    "RelativeJEREC1",
+    "RelativeJEREC2",
+    "RelativeJERHF",
+    "RelativePtBB",
+    "RelativePtEC1",
+    "RelativePtEC2",
+    "RelativePtHF",
+    "RelativeStatEC",
+    "RelativeStatFSR",
+    "RelativeStatHF",
+    "SinglePionECAL",
+    "SinglePionHCAL",
+    "SubTotalAbsolute",
+    "SubTotalMC",
+    "SubTotalPileUp",
+    "SubTotalPt",
+    "SubTotalRelative",
+    "SubTotalScale",
+    "TimePtEta",
+    "TotalNoFlavorNoTime",
+    "TotalNoFlavor",
+    "TotalNoTime",
+    "Total",
+    "Eta3to5",
+    "Eta0to5",
+    "Eta0to3",
+    "EC2",
+    "Closure"
+    }; // end uncertNames
+
+
 
     TTree *Run_Tree = new TTree("mutau_tree", "mutau_tree");
     Run_Tree->SetDirectory(0);
@@ -191,30 +243,24 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("metphi_resolutionUp", &metphi_resolutionUp, "metphi_resolutionUp/F");
     Run_Tree->Branch("metphi_resolutionDown", &metphi_resolutionDown, "metphi_resolutionDown/F");
 
-    Run_Tree->Branch("met_JetEta0to3Up", &met_JetEta0to3Up, "met_JetEta0to3Up/F");
-    Run_Tree->Branch("metphi_JetEta0to3Up", &metphi_JetEta0to3Up, "metphi_JetEta0to3Up/F");
-    Run_Tree->Branch("met_JetEta0to3Down", &met_JetEta0to3Down, "met_JetEta0to3Down/F");
-    Run_Tree->Branch("metphi_JetEta0to3Down", &metphi_JetEta0to3Down, "metphi_JetEta0to3Down/F");
-    Run_Tree->Branch("met_JetRelativeBalUp", &met_JetRelativeBalUp, "met_JetRelativeBalUp/F");
-    Run_Tree->Branch("metphi_JetRelativeBalUp", &metphi_JetRelativeBalUp, "metphi_JetRelativeBalUp/F");
-    Run_Tree->Branch("met_JetRelativeBalDown", &met_JetRelativeBalDown, "met_JetRelativeBalDown/F");
-    Run_Tree->Branch("metphi_JetRelativeBalDown", &metphi_JetRelativeBalDown, "metphi_JetRelativeBalDown/F");
-    Run_Tree->Branch("met_JetRelativeSampleUp", &met_JetRelativeSampleUp, "met_JetRelativeSampleUp/F");
-    Run_Tree->Branch("metphi_JetRelativeSampleUp", &metphi_JetRelativeSampleUp, "metphi_JetRelativeSampleUp/F");
-    Run_Tree->Branch("met_JetRelativeSampleDown", &met_JetRelativeSampleDown, "met_JetRelativeSampleDown/F");
-    Run_Tree->Branch("metphi_JetRelativeSampleDown", &metphi_JetRelativeSampleDown, "metphi_JetRelativeSampleDown/F");
-    Run_Tree->Branch("met_JetEta3to5Up", &met_JetEta3to5Up, "met_JetEta3to5Up/F");
-    Run_Tree->Branch("metphi_JetEta3to5Up", &metphi_JetEta3to5Up, "metphi_JetEta3to5Up/F");
-    Run_Tree->Branch("met_JetEta3to5Down", &met_JetEta3to5Down, "met_JetEta3to5Down/F");
-    Run_Tree->Branch("metphi_JetEta3to5Down", &metphi_JetEta3to5Down, "metphi_JetEta3to5Down/F");
-    Run_Tree->Branch("met_JetEta0to5Up", &met_JetEta0to5Up, "met_JetEta0to5Up/F");
-    Run_Tree->Branch("metphi_JetEta0to5Up", &metphi_JetEta0to5Up, "metphi_JetEta0to5Up/F");
-    Run_Tree->Branch("met_JetEta0to5Down", &met_JetEta0to5Down, "met_JetEta0to5Down/F");
-    Run_Tree->Branch("metphi_JetEta0to5Down", &metphi_JetEta0to5Down, "metphi_JetEta0to5Down/F");
-    Run_Tree->Branch("met_JetEC2Up", &met_JetEC2Up, "met_JetEC2Up/F");
-    Run_Tree->Branch("metphi_JetEC2Up", &metphi_JetEC2Up, "metphi_JetEC2Up/F");
-    Run_Tree->Branch("met_JetEC2Down", &met_JetEC2Down, "met_JetEC2Down/F");
-    Run_Tree->Branch("metphi_JetEC2Down", &metphi_JetEC2Down, "metphi_JetEC2Down/F");
+    for(unsigned int i=0; i<uncertNames.size(); i++){
+        Run_Tree->Branch(("njets_Jet"+uncertNames[i]+"Up").c_str(),     &njet_runtree_VecUp[i]                            );
+        Run_Tree->Branch(("njets_Jet"+uncertNames[i]+"Down").c_str(),     &njet_runtree_VecDown[i]                        );
+        Run_Tree->Branch(("vbfMass_Jet"+uncertNames[i]+"Up").c_str(),     &vbf_runtree_VecUp[i]                           );
+        Run_Tree->Branch(("vbfMass_Jet"+uncertNames[i]+"Down").c_str(),     &vbf_runtree_VecDown[i]                       );
+        Run_Tree->Branch(("type1_pfMet_shiftedPt_Jet"+uncertNames[i]+"Up").c_str(),     &met_runtree_VecUp[i]             );
+        Run_Tree->Branch(("type1_pfMet_shiftedPt_Jet"+uncertNames[i]+"Down").c_str(),     &met_runtree_VecDown[i]         );
+        Run_Tree->Branch(("type1_pfMet_shiftedPhi_Jet"+uncertNames[i]+"Up").c_str(),     &metphi_runtree_VecUp[i]         );
+        Run_Tree->Branch(("type1_pfMet_shiftedPhi_Jet"+uncertNames[i]+"Down").c_str(),     &metphi_runtree_VecDown[i]     );
+        Run_Tree->Branch(("j1pt_Jet"+uncertNames[i]+"Up").c_str(),     &j1pt_runtree_VecUp[i]                             );
+        Run_Tree->Branch(("j1pt_Jet"+uncertNames[i]+"Down").c_str(),     &j1pt_runtree_VecDown[i]                         );
+        Run_Tree->Branch(("j2pt_Jet"+uncertNames[i]+"Up").c_str(),     &j2pt_runtree_VecUp[i]                             );
+        Run_Tree->Branch(("j2pt_Jet"+uncertNames[i]+"Down").c_str(),     &j2pt_runtree_VecDown[i]                         );
+        Run_Tree->Branch(("mjj_Jet"+uncertNames[i]+"Up").c_str(),     &mjj_runtree_VecUp[i]                               );
+        Run_Tree->Branch(("mjj_Jet"+uncertNames[i]+"Down").c_str(),     &mjj_runtree_VecUp[i]                             );
+
+
+    }
 
     Run_Tree->Branch("passMu24", &passMu24, "passMu24/F");
     Run_Tree->Branch("passMu27", &passMu27, "passMu27/F");
@@ -235,36 +281,12 @@ int main(int argc, char** argv) {
     Run_Tree->Branch("filterMu20HPSTau27_2", &filterMu20HPSTau27_2, "filterMu20HPSTau27_2/F");
 
     Run_Tree->Branch("mjj", &mjj, "mjj/F");
-    Run_Tree->Branch("mjj_JetRelativeBalUp", &mjj_JetRelativeBalUp, "mjj_JetRelativeBalUp/F");
-    Run_Tree->Branch("mjj_JetRelativeBalDown", &mjj_JetRelativeBalDown, "mjj_JetRelativeBalDown/F");
-    Run_Tree->Branch("mjj_JetRelativeSampleUp", &mjj_JetRelativeSampleUp, "mjj_JetRelativeSampleUp/F");
-    Run_Tree->Branch("mjj_JetRelativeSampleDown", &mjj_JetRelativeSampleDown, "mjj_JetRelativeSampleDown/F");
-    Run_Tree->Branch("mjj_JetEta0to3Up", &mjj_JetEta0to3Up, "mjj_JetEta0to3Up/F");
-    Run_Tree->Branch("mjj_JetEta0to3Down", &mjj_JetEta0to3Down, "mjj_JetEta0to3Down/F");
-    Run_Tree->Branch("mjj_JetEta0to5Up", &mjj_JetEta0to5Up, "mjj_JetEta0to5Up/F");
-    Run_Tree->Branch("mjj_JetEta0to5Down", &mjj_JetEta0to5Down, "mjj_JetEta0to5Down/F");
-    Run_Tree->Branch("mjj_JetEta3to5Up", &mjj_JetEta3to5Up, "mjj_JetEta3to5Up/F");
-    Run_Tree->Branch("mjj_JetEta3to5Down", &mjj_JetEta3to5Down, "mjj_JetEta3to5Down/F");
-    Run_Tree->Branch("mjj_JetEC2Up", &mjj_JetEC2Up, "mjj_JetEC2Up/F");
-    Run_Tree->Branch("mjj_JetEC2Down", &mjj_JetEC2Down, "mjj_JetEC2Down/F");
     Run_Tree->Branch("gen_match_1", &gen_match_1, "gen_match_1/I");
     Run_Tree->Branch("gen_match_2", &gen_match_2, "gen_match_2/I");
 
     Run_Tree->Branch("nbtag", &nbtag, "nbtag/I");
     Run_Tree->Branch("nbtagL", &nbtagL, "nbtagL/I");
     Run_Tree->Branch("njets", &njets, "njets/I");
-    Run_Tree->Branch("njets_JetRelativeBalUp", &njets_JetRelativeBalUp, "njets_JetRelativeBalUp/I");
-    Run_Tree->Branch("njets_JetRelativeBalDown", &njets_JetRelativeBalDown, "njets_JetRelativeBalDown/I");
-    Run_Tree->Branch("njets_JetRelativeSampleUp", &njets_JetRelativeSampleUp, "njets_JetRelativeSampleUp/I");
-    Run_Tree->Branch("njets_JetRelativeSampleDown", &njets_JetRelativeSampleDown, "njets_JetRelativeSampleDown/I");
-    Run_Tree->Branch("njets_JetEta0to3Up", &njets_JetEta0to3Up, "njets_JetEta0to3Up/I");
-    Run_Tree->Branch("njets_JetEta0to3Down", &njets_JetEta0to3Down, "njets_JetEta0to3Down/I");
-    Run_Tree->Branch("njets_JetEta0to5Up", &njets_JetEta0to5Up, "njets_JetEta0to5Up/I");
-    Run_Tree->Branch("njets_JetEta0to5Down", &njets_JetEta0to5Down, "njets_JetEta0to5Down/I");
-    Run_Tree->Branch("njets_JetEta3to5Up", &njets_JetEta3to5Up, "njets_JetEta3to5Up/I");
-    Run_Tree->Branch("njets_JetEta3to5Down", &njets_JetEta3to5Down, "njets_JetEta3to5Down/I");
-    Run_Tree->Branch("njets_JetEC2Up", &njets_JetEC2Up, "njets_JetEC2Up/I");
-    Run_Tree->Branch("njets_JetEC2Down", &njets_JetEC2Down, "njets_JetEC2Down/I");
 
     Run_Tree->Branch("jpt_1", &jpt_1, "jpt_1/F");
     Run_Tree->Branch("jeta_1", &jeta_1, "jeta_1/F");
@@ -278,27 +300,6 @@ int main(int argc, char** argv) {
 
     Run_Tree->Branch("bweight", &bweight, "bweight/F");
 
-    Run_Tree->Branch("jpt_JetEta0to3Up_1", &jpt_JetEta0to3Up_1, "jpt_JetEta0to3Up_1/F");
-    Run_Tree->Branch("jpt_JetEta0to3Down_1", &jpt_JetEta0to3Down_1, "jpt_JetEta0to3Down_1/F");
-    Run_Tree->Branch("jpt_JetEta3to5Up_1", &jpt_JetEta3to5Up_1, "jpt_JetEta3to5Up_1/F");
-    Run_Tree->Branch("jpt_JetEta3to5Down_1", &jpt_JetEta3to5Down_1, "jpt_JetEta3to5Down_1/F");
-    Run_Tree->Branch("jpt_JetEta0to5Up_1", &jpt_JetEta0to5Up_1, "jpt_JetEta0to5Up_1/F");
-    Run_Tree->Branch("jpt_JetEta0to5Down_1", &jpt_JetEta0to5Down_1, "jpt_JetEta0to5Down_1/F");
-    Run_Tree->Branch("jpt_JetRelativeBalUp_1", &jpt_JetRelativeBalUp_1, "jpt_JetRelativeBalUp_1/F");
-    Run_Tree->Branch("jpt_JetRelativeBalDown_1", &jpt_JetRelativeBalDown_1, "jpt_JetRelativeBalDown_1/F");
-    Run_Tree->Branch("jpt_JetRelativeSampleUp_1", &jpt_JetRelativeSampleUp_1, "jpt_JetRelativeSampleUp_1/F");
-    Run_Tree->Branch("jpt_JetRelativeSampleDown_1", &jpt_JetRelativeSampleDown_1, "jpt_JetRelativeSampleDown_1/F");
-
-    Run_Tree->Branch("jpt_JetEta0to3Up_2", &jpt_JetEta0to3Up_2, "jpt_JetEta0to3Up_2/F");
-    Run_Tree->Branch("jpt_JetEta0to3Down_2", &jpt_JetEta0to3Down_2, "jpt_JetEta0to3Down_2/F");
-    Run_Tree->Branch("jpt_JetEta3to5Up_2", &jpt_JetEta3to5Up_2, "jpt_JetEta3to5Up_2/F");
-    Run_Tree->Branch("jpt_JetEta3to5Down_2", &jpt_JetEta3to5Down_2, "jpt_JetEta3to5Down_2/F");
-    Run_Tree->Branch("jpt_JetEta0to5Up_2", &jpt_JetEta0to5Up_2, "jpt_JetEta0to5Up_2/F");
-    Run_Tree->Branch("jpt_JetEta0to5Down_2", &jpt_JetEta0to5Down_2, "jpt_JetEta0to5Down_2/F");
-    Run_Tree->Branch("jpt_JetRelativeBalUp_2", &jpt_JetRelativeBalUp_2, "jpt_JetRelativeBalUp_2/F");
-    Run_Tree->Branch("jpt_JetRelativeBalDown_2", &jpt_JetRelativeBalDown_2, "jpt_JetRelativeBalDown_2/F");
-    Run_Tree->Branch("jpt_JetRelativeSampleUp_2", &jpt_JetRelativeSampleUp_2, "jpt_JetRelativeSampleUp_2/F");
-    Run_Tree->Branch("jpt_JetRelativeSampleDown_2", &jpt_JetRelativeSampleDown_2, "jpt_JetRelativeSampleDown_2/F");
 
     Run_Tree->Branch("bpt_1", &bpt_1, "bpt_1/F");
     Run_Tree->Branch("bflavor_1", &bflavor_1, "bflavor_1/F");
@@ -378,6 +379,7 @@ int main(int argc, char** argv) {
 	}
         if (evt_now!=evt_before){
            if (bestEntry>-1){
+              std::cout<<"vector value:  "<<tree->njetVecDown[42]<<std::endl;
               fillTree(Run_Tree,tree,bestEntry,recoil,isMC);
            }
 	   bestEntry=iEntry;
